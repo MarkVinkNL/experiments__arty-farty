@@ -1,0 +1,331 @@
+@import "./reset";
+
+.arty {
+  --c-primary: #885ea1;
+  --c-secondary: #d75b69;
+  --count: 3;
+  --transition: 0.7s cubic-bezier(1, 0, 0, 1);
+  height: 90vh;
+  aspect-ratio: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  background-color: var(--c-secondary);
+  border-radius: calc(50% / var(--count));
+  overflow: hidden;
+  box-shadow: 0 0 2rem rgba(0, 0, 0, 0.25);
+
+  @media (orientation: portrait) {
+    height: auto;
+    width: 90%;
+  }
+
+  * {
+    pointer-events: none;
+  }
+
+  &__wrapper {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__block {
+    width: calc(100% / var(--count));
+    height: calc(100% / var(--count));
+    background: #fff;
+    overflow: hidden;
+  }
+
+  .arty-block-el {
+    --block-bg: var(--c-primary);
+    --block-acc: var(--c-secondary);
+    --block-left: 0;
+    --block-top: 0;
+    --width: 200%;
+    --acc-rotation: 0;
+    --acc-extra: 0;
+    --radius: 50%;
+
+    position: relative;
+    background-color: var(--block-bg);
+    transition: var(--transition);
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: var(--width);
+      aspect-ratio: 1;
+      border-radius: var(--radius);
+      background-color: var(--block-acc);
+      left: var(--block-left);
+      top: var(--block-top);
+      transition: var(--transition);
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 101%;
+      aspect-ratio: 1;
+      background-color: var(--block-acc);
+      left: 50%;
+      top: 50%;
+      transform: translateX(-50%) rotate(var(--acc-rotation));
+      transform-origin: 50% 0;
+      opacity: var(--acc-extra);
+      transition: var(--transition);
+    }
+  }
+
+  .block {
+    //Full sphere variant
+    &__variant-1 {
+      @extend .arty-block-el;
+      --width: 100%;
+      --block-bg: var(--c-primary);
+      --block-acc: var(--c-secondary);
+      --acc-rotation: 0;
+      --acc-extra: 0;
+      --block-left: 0;
+      --block-top: 0;
+      --acc-rotation: 0;
+      --acc-extra: 0;
+      --radius: 50%;
+    }
+
+    &__variant-2 {
+      @extend .arty-block-el;
+      --width: 100%;
+      --block-bg: var(--c-secondary);
+      --block-acc: var(--c-primary);
+      --acc-rotation: 0;
+      --acc-extra: 0;
+      --block-left: 0;
+      --block-top: 0;
+      --acc-rotation: 0;
+      --acc-extra: 0;
+      --radius: 50%;
+    }
+
+    //Quarter point variants
+    &__variant-3 {
+      @extend .arty-block-el;
+      --block-left: 0;
+      --block-top: 0;
+      --block-bg: var(--c-primary);
+      --block-acc: var(--c-secondary);
+      --width: 200%;
+      --acc-rotation: 0;
+      --acc-extra: 0;
+      --radius: 50%;
+    }
+
+    &__variant-4 {
+      @extend .arty-block-el;
+      --block-left: -100%;
+      --block-top: 0;
+      --block-bg: var(--c-primary);
+      --block-acc: var(--c-secondary);
+      --width: 200%;
+      --acc-rotation: 0;
+      --acc-extra: 0;
+      --radius: 50%;
+    }
+
+    &__variant-5 {
+      @extend .arty-block-el;
+      --block-left: 0;
+      --block-top: -100%;
+      --block-bg: var(--c-primary);
+      --block-acc: var(--c-secondary);
+      --width: 200%;
+      --acc-rotation: 0;
+      --acc-extra: 0;
+      --radius: 50%;
+    }
+
+    &__variant-6 {
+      @extend .arty-block-el;
+      --block-left: -100%;
+      --block-top: -100%;
+      --block-bg: var(--c-primary);
+      --block-acc: var(--c-secondary);
+      --width: 200%;
+      --acc-rotation: 0;
+      --acc-extra: 0;
+      --radius: 50%;
+    }
+
+    &__variant-7 {
+      @extend .arty-block-el;
+      --block-left: 0;
+      --block-top: 0;
+      --block-bg: var(--c-secondary);
+      --block-acc: var(--c-primary);
+      --width: 200%;
+      --acc-rotation: 0;
+      --acc-extra: 0;
+      --radius: 50%;
+    }
+
+    &__variant-8 {
+      @extend .arty-block-el;
+      --block-left: -100%;
+      --block-top: 0;
+      --block-bg: var(--c-secondary);
+      --block-acc: var(--c-primary);
+      --width: 200%;
+      --acc-rotation: 0;
+      --acc-extra: 0;
+      --radius: 50%;
+    }
+
+    &__variant-9 {
+      @extend .arty-block-el;
+      --block-left: 0;
+      --block-top: -100%;
+      --block-bg: var(--c-secondary);
+      --block-acc: var(--c-primary);
+      --width: 200%;
+      --acc-rotation: 0;
+      --acc-extra: 0;
+      --radius: 50%;
+    }
+
+    &__variant-10 {
+      @extend .arty-block-el;
+      --block-left: -100%;
+      --block-top: -100%;
+      --block-bg: var(--c-secondary);
+      --block-acc: var(--c-primary);
+      --width: 200%;
+      --acc-rotation: 0;
+      --acc-extra: 0;
+      --radius: 50%;
+    }
+
+    //Rounded block variants
+    &__variant-11 {
+      @extend .arty-block-el;
+      --width: 100%;
+      --block-bg: var(--c-primary);
+      --block-acc: var(--c-secondary);
+      --acc-rotation: 0deg;
+      --acc-extra: 1;
+      --block-left: 0;
+      --block-top: 0;
+      --radius: 50%;
+    }
+
+    &__variant-12 {
+      @extend .arty-block-el;
+      --width: 100%;
+      --block-bg: var(--c-primary);
+      --block-acc: var(--c-secondary);
+      --acc-rotation: 90deg;
+      --acc-extra: 1;
+      --block-left: 0;
+      --block-top: 0;
+      --radius: 50%;
+    }
+
+    &__variant-13 {
+      @extend .arty-block-el;
+      --width: 100%;
+      --block-bg: var(--c-primary);
+      --block-acc: var(--c-secondary);
+      --acc-rotation: 180deg;
+      --acc-extra: 1;
+      --block-left: 0;
+      --block-top: 0;
+      --radius: 50%;
+    }
+
+    &__variant-14 {
+      @extend .arty-block-el;
+      --width: 100%;
+      --block-bg: var(--c-primary);
+      --block-acc: var(--c-secondary);
+      --acc-rotation: 270deg;
+      --acc-extra: 1;
+      --block-left: 0;
+      --block-top: 0;
+      --radius: 50%;
+    }
+
+    &__variant-15 {
+      @extend .arty-block-el;
+      --width: 100%;
+      --block-bg: var(--c-secondary);
+      --block-acc: var(--c-primary);
+      --acc-rotation: 0deg;
+      --acc-extra: 1;
+      --block-left: 0;
+      --block-top: 0;
+      --radius: 50%;
+    }
+
+    &__variant-16 {
+      @extend .arty-block-el;
+      --width: 100%;
+      --block-bg: var(--c-secondary);
+      --block-acc: var(--c-primary);
+      --acc-rotation: 90deg;
+      --acc-extra: 1;
+      --block-left: 0;
+      --block-top: 0;
+      --radius: 50%;
+    }
+
+    &__variant-17 {
+      @extend .arty-block-el;
+      --width: 100%;
+      --block-bg: var(--c-secondary);
+      --block-acc: var(--c-primary);
+      --acc-rotation: 180deg;
+      --acc-extra: 1;
+      --block-left: 0;
+      --block-top: 0;
+      --radius: 50%;
+    }
+
+    &__variant-18 {
+      @extend .arty-block-el;
+      --width: 100%;
+      --block-bg: var(--c-secondary);
+      --block-acc: var(--c-primary);
+      --acc-rotation: 270deg;
+      --acc-extra: 1;
+      --block-left: 0;
+      --block-top: 0;
+      --radius: 50%;
+    }
+
+    &__variant-19 {
+      @extend .arty-block-el;
+      --width: 100%;
+      --block-bg: var(--c-primary);
+      --block-acc: var(--c-secondary);
+      --radius: 0;
+      --block-left: 0;
+      --block-top: 0;
+      --acc-rotation: 0;
+      --acc-extra: 0;
+    }
+
+    &__variant-20 {
+      @extend .arty-block-el;
+      --width: 100%;
+      --block-bg: var(--c-secondary);
+      --block-acc: var(--c-primary);
+      --radius: 0;
+      --block-left: 0;
+      --block-top: 0;
+      --acc-rotation: 0;
+      --acc-extra: 0;
+    }
+  }
+}
