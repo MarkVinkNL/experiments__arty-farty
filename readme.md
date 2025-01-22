@@ -1,6 +1,6 @@
 # Arty Farty
 
-Just some silly fun!
+[Just some silly fun, check it out!](https://markvinknl.github.io/experiments__arty-farty/)
 
 ## Install
 
