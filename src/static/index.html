@@ -4,11 +4,20 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Experiment starter</title>
+    <title>Experiment - Produce pattern based on previous tile</title>
   </head>
   <body>
     <div class="arty__wrapper">
-      <div class="arty" arty="4" arty-active></div>
+      <!-- 
+        Optional html attributes:
+        arty-sequence: The sequence of the tiles (10ms - 200ms)
+        arty-interval: The interval between the scrambles (1000ms - 10000ms)
+
+        Optional css attributes:
+        --c-primary: #885ea1;
+        --c-secondary: #d75b69;
+      -->
+      <div class="arty" arty="6" arty-active></div>
     </div>
     <link rel="stylesheet" href="./css/style.css" />
     <script src="./js/script.js"></script>
