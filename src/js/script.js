@@ -35,7 +35,6 @@ var options = [
   let sequenceTime = arty.getAttribute("arty-sequence") ?? 0;
 
   let amount = cols * cols;
-  let scrambleCount = 0;
   let scrambleInterval;
 
   arty.style.setProperty("--count", cols);
@@ -62,12 +61,7 @@ var options = [
   function scramble() {
     clearInterval(scrambleInterval);
 
-    // Door het beperkte aantal opties is de kans groot dat er repititie in de grid komt
-    // Daarom wordt de grid gereset na 5 keer scramblen
-    if (scrambleCount >= 5) {
-      map[0][0] = Math.floor(Math.random() * 20);
-      scrambleCount = 0;
-    }
+    map[0][0] = Math.floor(Math.random() * 20);
 
     for (let i = 0; i < amount; i++) {
       let y = Math.ceil((i + 1) / cols) - 1;
@@ -121,8 +115,6 @@ var options = [
 
       map[y][x] = figureOptions[Math.floor(Math.random() * figureOptions.length)];
     }
-
-    scrambleCount++;
 
     [...arty.childNodes].forEach((block, i) => {
       setTimeout(() => {
